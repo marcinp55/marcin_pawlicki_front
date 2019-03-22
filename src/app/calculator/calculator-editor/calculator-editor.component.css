@@ -1,0 +1,12 @@
+.group-title {
+  margin-bottom: 15px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.custom-cont-style {
+  border: 5px solid #D5EBFF;
+  background-color: #D5EBFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
