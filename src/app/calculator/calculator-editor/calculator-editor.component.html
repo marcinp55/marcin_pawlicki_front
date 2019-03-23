@@ -1,24 +1,43 @@
 <div class="container-fluid custom-cont-style">
   <label for="calculatorForm"
          class="font-weight-bold group-title">Calculate gross to net amount</label>
-  <form id="calculatorForm">
+  <form id="calculatorForm" [formGroup]="calculatorForm">
     <div class="form-group row">
       <label for="countrySelect" class="col-sm-2 col-form-label">Country</label>
       <div class="col-sm-6">
-        <select id="countrySelect" class="form-control">
-          <option>Poland</option>
-          <option>United Kingdom</option>
-          <option>Germany</option>
+        <select id="countrySelect" class="form-control" formControlName="countryObject">
+          <option *ngFor="let country of fetchedCountries"
+                  [ngValue]="country">
+            {{ country.countryName }}
+          </option>
         </select>
       </div>
     </div>
     <div class="form-group row">
-      <label for="dailyAmount" class="col-sm-2 col-form-label">Daily Amount</label>
+      <label for="dailyAmount"
+             class="col-sm-2 col-form-label">
+        Daily Amount
+      </label>
       <div class="col-sm-6">
-        <input id="dailyAmount" type="number" class="form-control">
+        <input id="dailyAmount"
+               type="number"
+               class="form-control"
+               formControlName="dailyAmount"
+               [ngStyle]="{'border-color': !calculatorForm.get('dailyAmount').valid ? 'red' : 'transparent'}">
+        <small *ngIf="!calculatorForm.get('dailyAmount').valid"
+               class="form-text text-muted">
+          Daily amount is required and must be greater than 0.
+        </small>
       </div>
     </div>
-    <button type="button" class="btn btn-primary" style="margin-bottom: 10px; margin-top: 10px">Calculate</button>
-    <button type="button" class="btn btn-danger" style="margin-left: 10px">Clear</button>
+    <button type="button"
+            class="btn btn-primary"
+            style="margin-bottom: 10px; margin-top: 10px"
+            (click)="onCalculate()"
+            [disabled]="!calculatorForm.valid">Calculate</button>
+    <button type="button"
+            class="btn btn-danger"
+            style="margin-left: 10px"
+            (click)="onClear()">Clear</button>
   </form>
 </div>

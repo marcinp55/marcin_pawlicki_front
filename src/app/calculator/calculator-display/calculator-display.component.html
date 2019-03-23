@@ -1,11 +1,11 @@
 <div id="valuesContainer" class="container-fluid custom-cont-style">
-  <label for="valuesContainer" class="group-title">Current values</label>
+  <label for="valuesContainer" class="group-title">Values</label>
   <div class="row">
     <div class="col-sm-3">
       <label for="dailyAmountParagraph">Daily amount: </label>
     </div>
     <div class="col-sm-3">
-      <p id="dailyAmountParagraph">300</p>
+      <p id="dailyAmountParagraph">{{ dailyAmount | currency:currencyCode }}</p>
     </div>
   </div>
   <div class="row">
@@ -13,7 +13,7 @@
       <label for="grossAmountParagraph">Gross amount: </label>
     </div>
     <div class="col-sm-3">
-      <p id="grossAmountParagraph">6600</p>
+      <p id="grossAmountParagraph">{{ grossAmount | currency:currencyCode }}</p>
     </div>
   </div>
   <div class="row">
@@ -21,7 +21,7 @@
       <label for="taxParagraph">Tax: </label>
     </div>
     <div class="col-sm-3">
-      <p id="taxParagraph">15%</p>
+      <p id="taxParagraph">{{ tax }}%</p>
     </div>
   </div>
   <div class="row">
@@ -29,13 +29,13 @@
       <label for="fixedCostParagraph">Fixed cost: </label>
     </div>
     <div class="col-sm-3">
-      <p id="fixedCostParagraph">200</p>
+      <p id="fixedCostParagraph">{{ fixedCost | currency:currencyCode }}</p>
     </div>
     <div class="col-sm-3">
-      <label for="netAmountParagraph" style="font-size: 40px;">Net amount: </label>
+      <label for="netAmountParagraph" style="font-size: 36px;">Net amount: </label>
     </div>
     <div class="col-sm-3">
-      <p id="netAmountParagraph" style="font-size: 40px; text-decoration: underline;">5000</p>
+      <p id="netAmountParagraph" style="font-size: 36px;">{{ netAmount | currency:'PLN ' }}</p>
     </div>
   </div>
 </div>
