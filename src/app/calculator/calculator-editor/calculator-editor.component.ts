@@ -15,8 +15,8 @@ import { CalculatorFormService } from '../../service/calculator-form.service';
   styleUrls: ['./calculator-editor.component.css']
 })
 export class CalculatorEditorComponent implements OnInit {
-  private fetchedCountries: CountryModel[];
-  private calculatorForm: FormGroup;
+  public fetchedCountries: CountryModel[];
+  public calculatorForm: FormGroup;
   private finalCalculatorData: CalculatorDataModel;
 
   private countryData: CountryModel;
