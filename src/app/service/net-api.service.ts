@@ -4,7 +4,7 @@ import { ApiResponseModel } from '../model/calculator/api-response.model';
 
 @Injectable()
 export class NetApiService {
-  private endpointRootUrl = 'http://localhost:8080/nbp/net';
+  private endpointRootUrl = 'https://sonalake-recruit.herokuapp.com/nbp/net';
 
   constructor(private httpClient: HttpClient) {
   }
