@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { CalculatorFormService } from '../../service/calculator-form.service';
 import { CalculatorDataModel } from '../../model/calculator/calculator-data.model';
 
@@ -8,12 +9,12 @@ import { CalculatorDataModel } from '../../model/calculator/calculator-data.mode
   styleUrls: ['./calculator-display.component.css']
 })
 export class CalculatorDisplayComponent implements OnInit {
-  private dailyAmount = 0;
-  private grossAmount = 0;
-  private tax = 0;
-  private fixedCost = 0;
-  private currencyCode = '';
-  private netAmount = 0;
+  public dailyAmount = 0;
+  public grossAmount = 0;
+  public tax = 0;
+  public fixedCost = 0;
+  public currencyCode = '';
+  public netAmount = 0;
   private fetchedCalcData: CalculatorDataModel;
 
   constructor(private calcFormService: CalculatorFormService) {
@@ -26,7 +27,9 @@ export class CalculatorDisplayComponent implements OnInit {
         console.log(calcDataModel);
         this.fillData();
       }
-    });
+    }, (error => {
+      alert('Error getting countries data. \n' + error);
+    }));
   }
 
   fillData() {

@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { CountryService } from '../../service/country.service';
 import { CountryModel } from '../../model/country/country.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NetApiService } from '../../service/net-api.service';
 import { CalculatorDataModel } from '../../model/calculator/calculator-data.model';
 import { CalculatorFormService } from '../../service/calculator-form.service';
+
 
 @Component({
   selector: 'app-calculator-editor',
@@ -34,11 +37,6 @@ export class CalculatorEditorComponent implements OnInit {
     });
   }
 
-  sendCalculatedData() {
-    this.finalCalculatorData = new CalculatorDataModel(this.countryData, this.dailyAmount, this.grossPay, this.netPay);
-    this.calcFormService.sendData(this.finalCalculatorData);
-  }
-
   onCalculate() {
     this.countryData = this.calculatorForm.get('countryObject').value;
     this.dailyAmount = this.calculatorForm.get('dailyAmount').value;
@@ -50,7 +48,15 @@ export class CalculatorEditorComponent implements OnInit {
           this.netPay = response.netPay;
           this.sendCalculatedData();
         }
-      });
+      },
+        (error: HttpErrorResponse) => {
+          alert('Error getting data from the server. \n' + error.message);
+        });
+  }
+
+  sendCalculatedData() {
+    this.finalCalculatorData = new CalculatorDataModel(this.countryData, this.dailyAmount, this.grossPay, this.netPay);
+    this.calcFormService.sendData(this.finalCalculatorData);
   }
 
   onClear() {

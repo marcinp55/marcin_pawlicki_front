@@ -8,7 +8,7 @@
         <select id="countrySelect" class="form-control" formControlName="countryObject">
           <option *ngFor="let country of fetchedCountries"
                   [ngValue]="country">
-            {{ country.countryName }}
+            {{ country.countryName }} ({{ country.currencyCode }})
           </option>
         </select>
       </div>
